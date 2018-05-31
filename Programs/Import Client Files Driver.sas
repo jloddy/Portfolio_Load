@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*---------------------------------------------------------------------
 
@@ -103,11 +104,13 @@ DATA _NULL_;
 	SET COUNT_FILES_IN;
 	CALL EXECUTE('%NRSTR(%CHECK_FIRST_FILE_IN(FILE='||FILE_NAME_FULL||',TOTAL_COUNTER='||PUT(COUNT,8.)||',FILE_NAME='||FILE_NAME||',EXTENSION='||EXTENSION||'))');
 
+=======
+>>>>>>> master
 /*---------------------------------------------------------------------
 
 	AUTHOR: JUSTIN HUBBARD - EMERGENT BUSINESS GROUP
 	
-	PURPOSE: IMPORT CLIENT FILES (PIPE DELIMITED)
+	PURPOSE: IMPORT CLIENT FILES (CSV DELIMITED)
 	
 	STEPS:
 
@@ -206,5 +209,8 @@ QUIT;
 DATA _NULL_;
 	SET COUNT_FILES_IN;
 	CALL EXECUTE('%NRSTR(%CHECK_FIRST_FILE_IN(FILE='||FILE_NAME_FULL||',TOTAL_COUNTER='||PUT(COUNT,8.)||',FILE_NAME='||FILE_NAME||',EXTENSION='||EXTENSION||'))');
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 RUN;

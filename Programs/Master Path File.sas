@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 /*------------------------------------------------------------------
 
 	PURPOSE: GENERAL LOCATION OF PATH INFORMATION BETWEEN JUSTIN'S
@@ -14,11 +17,11 @@
 		CUSTOM_PROPERTY_PATH
 		SCRUB_PATH;
 
-%LET DATE=%SYSFUNC(INTNX(DAY,%SYSFUNC(TODAY()),0,END),DATE7.);
+
 
 /*JOHNS PATHS:*/
 
-%LET WHEREPRGMSAT = \\NXX-SWS-AD001\Users$\john.lodmell\Documents\GitHub\Portfolio_Load\Programs; 
+/*%LET WHEREPRGMSAT = \\NXX-SWS-AD001\Users$\john.lodmell\Documents\GitHub\Portfolio_Load\Programs; */
 
 /*MASTER PATH SHOULD BE ONLY PATH THAT YOU NEED TO CHANGE*/
 %LET MASTER_DIR = C:\Users\john.lodmell\OneDrive - emergentbusinessgroup.com\New Business\New_Load_Process_Test;
@@ -43,8 +46,8 @@
 /*%LET MASTER_DIR = E:\SHARED\CADA\SAS SOURCE CODE\DEVELOPMENT\JHUBBARD\EBG\1_PORTFOLIO_FILE_STANDARDIZATION\PRODUCTION ENVIRONMENT TEST;*/
 /*%LET WHEREPRGMSAT = E:\SHARED\CADA\SAS SOURCE CODE\DEVELOPMENT\JHUBBARD\EBG\1_PORTFOLIO_FILE_STANDARDIZATION\PROGRAMS\PROGRAMS;*/
 /*%PUT &WHEREPRGMSAT;*/
-
-
+/**/
+/**/
 /*%LET BEAM_EXPORT_PATH = &MASTER_DIR\EXPORT TO BEAM\&DATE.\;*/
 /*%LET DATA_SERVICE_PATH = &MASTER_DIR\DATA SERVICES INPUTS\&DATE.\;*/
 /*%LET EXCEPTION_PATH = &MASTER_DIR\EXCEPTION FILES\&DATE.;*/
@@ -54,6 +57,7 @@
 
 
 
+<<<<<<< HEAD
 
 /*------------------------------------------------------------------
 
@@ -110,4 +114,6 @@
 
 
 
+=======
+>>>>>>> master
 	
