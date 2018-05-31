@@ -53,6 +53,8 @@ RUN;
 			RUN;
 
 		/*IMPORT CLIENT OTHER DATA*/
+
+			*May need to remember to update this hardcoded address in the future if the macro assignment is not fixed;
 			PROC IMPORT DATAFILE="C:\Users\john.lodmell\OneDrive - emergentbusinessgroup.com\New Business\New_Load_Process_Test\CLIENT_OTHER_DATA\LendingClub_OTHER_DATA.csv"
 				DBMS=csv
 				REPLACE
@@ -61,9 +63,15 @@ RUN;
 				GETNAMES=YES;
 			RUN;
 
+			
+
 			PROC CONTENTS DATA=OTHER_DATA_IMPORT NOPRINT
 					OUT=OTHER_DATA_IMPORT_CONTENTS;
 			RUN;
+
+			Proc sort data=OTHER_DATA_IMPORT_CONTENTS;
+				by varnum;
+			run;
 
 			PROC SQL;
 				SELECT NAME INTO: VARS SEPARATED BY " $CHAR50. "
