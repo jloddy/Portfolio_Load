@@ -3,6 +3,13 @@
 /*MASTER PATH*/
 /*%LET DATA_SERVICE_PATH = E:\SHARED\CADA\SAS SOURCE CODE\DEVELOPMENT\JHUBBARD\EBG\1_PORTFOLIO_FILE_STANDARDIZATION\PRODUCTION ENVIRONMENT TEST\DATA SERVICES INPUTS\&DATE.\;*/
 
+PROC FORMAT;
+    PICTURE DATENOW OTHER='%0Y%0m%0d%0h%0M%0S' (DATATYPE=DATETIME);
+RUN;
+
+%LET DT = %SYSFUNC(DATETIME(), DATENOW.);
+
+%PUT &DT.;
 
 /*MACROS FOR PATHS*/
 %LET LN_SCRA_INPUT = LN_SCRA_INPUT;
@@ -13,11 +20,11 @@
 
 
 /*GET FULLPATH MACROS*/
-%LET FULLPATH_LN_SCRA_INPUT = &DATA_SERVICE_PATH.&LN_SCRA_INPUT._&DATE..CSV;
-%LET FULLPATH_LNPER_INPUT = &DATA_SERVICE_PATH.&LNPER_INPUT._&DATE..CSV;
-%LET FULLPATH_LNPMTSCORE_INPUT = &DATA_SERVICE_PATH.&LNPMTSCORE_INPUT._&DATE..CSV;
-%LET FULLPATH_LN_WATERFALL_INPUT = &DATA_SERVICE_PATH.&LN_WATERFALL_INPUT._&DATE..CSV;
-%LET FULLPATH_TLO_WATERFALL_INPUT = &DATA_SERVICE_PATH.&TLO_WATERFALL_INPUT._&DATE..CSV;
+%LET FULLPATH_LN_SCRA_INPUT = &DATA_SERVICE_PATH.&LN_SCRA_INPUT._&DT..CSV;
+%LET FULLPATH_LNPER_INPUT = &DATA_SERVICE_PATH.&LNPER_INPUT._&DT..CSV;
+%LET FULLPATH_LNPMTSCORE_INPUT = &DATA_SERVICE_PATH.&LNPMTSCORE_INPUT._&DT..CSV;
+%LET FULLPATH_LN_WATERFALL_INPUT = &DATA_SERVICE_PATH.&LN_WATERFALL_INPUT._&DT..CSV;
+%LET FULLPATH_TLO_WATERFALL_INPUT = &DATA_SERVICE_PATH.&TLO_WATERFALL_INPUT._&DT..CSV;
 
 
 /*EXPORT DATA DATASETS INTO CSV USING FULL PATH MACROS*/
@@ -61,61 +68,61 @@ RUN;
 
 /*UPLOAD FILES TO SFTP SITE (WILL NEED EBG CREDENTIALS AND SFTP INFORMATION TO REPLACE SILVERPOP'S FORMAT)*/
 
-
-/*LN_SCRA_INPUT*/
-options noxwait xsync;
-data _null_;
-	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||
-					' "option batch abort" ' || ' "open sftptransfer@advanceamerica.net:M@rket1ng123!@transfer3.silverpop.com" ' ||
-					' "cd upload" ' || """put """"&FULLPATH_LN_SCRA_INPUT""""""" || ' "exit"';
-call system(uploadfile);
-run;
-
-/*LNPER_INPUT*/
-options noxwait xsync;
-data _null_;
-	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||
-					' "option batch abort" ' || ' "open HOST@advanceamerica.net:PASSWORDHERE@transfer3.silverpop.com" ' ||
-					' "cd upload" ' || """put """"&FULLPATH_LNPER_INPUT""""""" || ' "exit"';
-call system(uploadfile);
-run;
-
-/*LNPMTSCORE_INPUT*/
-options noxwait xsync;
-data _null_;
-	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||
-					' "option batch abort" ' || ' "open HOST@advanceamerica.net:PASSWORDHERE@transfer3.silverpop.com" ' ||
-					' "cd upload" ' || """put """"&FULLPATH_LNPMTSCORE_INPUT""""""" || ' "exit"';
-call system(uploadfile);
-run;
-
-/*LN_WATERFALL_INPUT*/
-options noxwait xsync;
-data _null_;
-	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||
-					' "option batch abort" ' || ' "open HOST@advanceamerica.net:PASSWORDHERE@transfer3.silverpop.com" ' ||
-					' "cd upload" ' || """put """"&FULLPATH_LN_WATERFALL_INPUT""""""" || ' "exit"';
-call system(uploadfile);
-run;
-
-/*TLO_WATERFALL_INPUT*/
-options noxwait xsync;
-data _null_;
-	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||
-					' "option batch abort" ' || ' "open HOST@advanceamerica.net:PASSWORDHERE@transfer3.silverpop.com" ' ||
-					' "cd upload" ' || """put """"&FULLPATH_TLO_WATERFALL_INPUT""""""" || ' "exit"';
-call system(uploadfile);
-run;
-
-/*END OF SUBMISSIONS - SEND EMAIL TO JOHN*/
-
-
-/*EMAIL WHEN FINISHED*/
-OPTIONS EMAILSYS=SMTP EMAILHOST=MAIL.EBG.NET EMAILPORT=25;
-FILENAME MYMAIL EMAIL; 
-DATA _NULL_;
-   FILE MYMAIL
-		TO=('JLODMELL@EBG.NET')
-	    FROM='PORTFOLIO_UPLOAD@COMPLETE.COM'
-        SUBJECT="PORTFOLIO DATA SERVICES UPLOAD IS COMPLETE - &DATE";
-RUN;
+/**/
+/*/*LN_SCRA_INPUT*/*/
+/*options noxwait xsync;*/
+/*data _null_;*/
+/*	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||*/
+/*					' "option batch abort" ' || ' "open sftptransfer@advanceamerica.net:M@rket1ng123!@transfer3.silverpop.com" ' ||*/
+/*					' "cd upload" ' || """put """"&FULLPATH_LN_SCRA_INPUT""""""" || ' "exit"';*/
+/*call system(uploadfile);*/
+/*run;*/
+/**/
+/*/*LNPER_INPUT*/*/
+/*options noxwait xsync;*/
+/*data _null_;*/
+/*	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||*/
+/*					' "option batch abort" ' || ' "open HOST@advanceamerica.net:PASSWORDHERE@transfer3.silverpop.com" ' ||*/
+/*					' "cd upload" ' || """put """"&FULLPATH_LNPER_INPUT""""""" || ' "exit"';*/
+/*call system(uploadfile);*/
+/*run;*/
+/**/
+/*/*LNPMTSCORE_INPUT*/*/
+/*options noxwait xsync;*/
+/*data _null_;*/
+/*	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||*/
+/*					' "option batch abort" ' || ' "open HOST@advanceamerica.net:PASSWORDHERE@transfer3.silverpop.com" ' ||*/
+/*					' "cd upload" ' || """put """"&FULLPATH_LNPMTSCORE_INPUT""""""" || ' "exit"';*/
+/*call system(uploadfile);*/
+/*run;*/
+/**/
+/*/*LN_WATERFALL_INPUT*/*/
+/*options noxwait xsync;*/
+/*data _null_;*/
+/*	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||*/
+/*					' "option batch abort" ' || ' "open HOST@advanceamerica.net:PASSWORDHERE@transfer3.silverpop.com" ' ||*/
+/*					' "cd upload" ' || """put """"&FULLPATH_LN_WATERFALL_INPUT""""""" || ' "exit"';*/
+/*call system(uploadfile);*/
+/*run;*/
+/**/
+/*/*TLO_WATERFALL_INPUT*/*/
+/*options noxwait xsync;*/
+/*data _null_;*/
+/*	uploadfile = '"c:\program files (x86)\winscp\winscp.exe" /console /command' ||*/
+/*					' "option batch abort" ' || ' "open HOST@advanceamerica.net:PASSWORDHERE@transfer3.silverpop.com" ' ||*/
+/*					' "cd upload" ' || """put """"&FULLPATH_TLO_WATERFALL_INPUT""""""" || ' "exit"';*/
+/*call system(uploadfile);*/
+/*run;*/
+/**/
+/*/*END OF SUBMISSIONS - SEND EMAIL TO JOHN*/*/
+/**/
+/**/
+/*/*EMAIL WHEN FINISHED*/*/
+/*OPTIONS EMAILSYS=SMTP EMAILHOST=MAIL.EBG.NET EMAILPORT=25;*/
+/*FILENAME MYMAIL EMAIL; */
+/*DATA _NULL_;*/
+/*   FILE MYMAIL*/
+/*		TO=('JLODMELL@EBG.NET')*/
+/*	    FROM='PORTFOLIO_UPLOAD@COMPLETE.COM'*/
+/*        SUBJECT="PORTFOLIO DATA SERVICES UPLOAD IS COMPLETE - &DATE";*/
+/*RUN;*/

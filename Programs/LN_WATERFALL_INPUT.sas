@@ -1,6 +1,34 @@
 /*CREATE LN_WATERFALL_INPUT*/
 
-DATA LN_WATERFALL_INPUT;
+
+DATA LN_Waterfall_input_pre(DROP=AGREEMENT_DATE);
 	SET DATA_SERVICES_INPUTS_MASTER;
-	DROP DOB;
+	AGREEMENT_DATE_use = INPUT(agreement_date,MMDDYY10.);
+	FORMAT AGREEMENT_DATE_use YYMMDD10.;
+	DROP DOB ;
+RUN;
+
+DATA LN_waterfall_INPUT_PRE2 (DROP=Agreement_Date_USE);
+	SET LN_waterfall_INPUT_PRE;
+	Agreement_Date_1 = Agreement_Date_USE;
+	FORMAT Agreement_Date_1 YYMMDD10.;
+RUN;
+
+DATA LN_waterfall_INPUT (DROP=agreement_date_1);
+	SET LN_waterfall_INPUT_PRE2;
+	Agreement_Date = COMPRESS(PUT(Agreement_Date_1,YYMMDD10.),"1234567890",'KIS');
+RUN;
+
+
+
+
+
+
+
+
+
+
+DATA LN_SCRA_INPUT (DROP=DOB_1);
+	SET LN_SCRA_INPUT_PRE2;
+	DOB = COMPRESS(PUT(DOB_1,YYMMDD10.),"1234567890",'KIS');
 RUN;
