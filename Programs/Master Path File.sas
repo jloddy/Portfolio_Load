@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*------------------------------------------------------------------
 
 	PURPOSE: GENERAL LOCATION OF PATH INFORMATION BETWEEN JUSTIN'S
@@ -54,7 +54,7 @@
 
 
 
-=======
+
 /*------------------------------------------------------------------
 
 	PURPOSE: GENERAL LOCATION OF PATH INFORMATION BETWEEN JUSTIN'S
@@ -110,5 +110,4 @@
 
 
 
->>>>>>> master
 	

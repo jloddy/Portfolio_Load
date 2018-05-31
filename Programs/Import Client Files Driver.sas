@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*---------------------------------------------------------------------
 
 	AUTHOR: JUSTIN HUBBARD - EMERGENT BUSINESS GROUP
@@ -102,7 +102,7 @@ QUIT;
 DATA _NULL_;
 	SET COUNT_FILES_IN;
 	CALL EXECUTE('%NRSTR(%CHECK_FIRST_FILE_IN(FILE='||FILE_NAME_FULL||',TOTAL_COUNTER='||PUT(COUNT,8.)||',FILE_NAME='||FILE_NAME||',EXTENSION='||EXTENSION||'))');
-=======
+
 /*---------------------------------------------------------------------
 
 	AUTHOR: JUSTIN HUBBARD - EMERGENT BUSINESS GROUP
@@ -206,5 +206,5 @@ QUIT;
 DATA _NULL_;
 	SET COUNT_FILES_IN;
 	CALL EXECUTE('%NRSTR(%CHECK_FIRST_FILE_IN(FILE='||FILE_NAME_FULL||',TOTAL_COUNTER='||PUT(COUNT,8.)||',FILE_NAME='||FILE_NAME||',EXTENSION='||EXTENSION||'))');
->>>>>>> master
+
 RUN;
