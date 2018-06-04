@@ -16,7 +16,7 @@
 -----------------------------------------------------------------------*/
 OPTIONS MPRINT MLOGIC SYMBOLGEN VALIDVARNAME=ANY;
 
-FILENAME GEO_IN PIPE 'DIR "C:\Users\john.lodmell\OneDrive - emergentbusinessgroup.com\New Business\New_Load_Process_Test\STANDARDIZED CLIENT FILES\*.CSV" /B ';
+FILENAME GEO_IN PIPE 'DIR "C:\Users\john.lodmell\OneDrive - emergentbusinessgroup.com\New Business\Galaxy\2018_05_25_Placement\Prosper_nbr2\STANDARDIZED CLIENT FILES\*.CSV" /B ';
 
 *Justin's Address;
 /*FILENAME GEO_IN PIPE 'DIR "E:\SHARED\CADA\SAS SOURCE CODE\DEVELOPMENT\JHUBBARD\EBG\1_PORTFOLIO_FILE_STANDARDIZATION\PRODUCTION ENVIRONMENT TEST\STANDARDIZED CLIENT FILES\*.CSV" /B ';*/
